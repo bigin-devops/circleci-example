@@ -6,7 +6,7 @@ setup: true
 parameters:
   env:
     type: string
-    default: dev
+    default: ""
 
 # the continuation orb is required in order to use dynamic configuration
 orbs:
@@ -26,5 +26,6 @@ jobs:
 # our single workflow, that triggers the setup job defined above
 workflows:
   setup:
+    when: << pipeline.parameters.env >>
     jobs:
       - setup
