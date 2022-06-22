@@ -1,0 +1,22 @@
+name: Trigger Build on PR
+
+on:
+  push:
+
+jobs:
+  trigger_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger CircleCI
+        env:
+          CIRCLE_BRANCH: ${{ github.head_ref }}
+          CIRCLE_TOKEN: ${{ secrets.CIRCLE_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          curl -X POST \
+          -H "Circle-Token: ${CIRCLE_TOKEN}" \
+          -H 'Content-Type: application/json' \
+          -H 'Accept: application/json' \
+          -d "{\"branch\":\"${CIRCLE_BRANCH}\",\"parameters\":{\"env\":\"prd"\}}" \
+          https://circleci.com/api/v2/project/gh/${GITHUB_REPOSITORY}/pipeline
