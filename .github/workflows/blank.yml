@@ -14,13 +14,13 @@ jobs:
           CIRCLE_TOKEN: ${{ secrets.CIRCLE_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
-            "branch":'"${GITHUB_REF##*/}"',
+          curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d `{
+            "branch":"${GITHUB_REF##*/}",
             "parameters": {
               "env":"prd",
               "trigger":true
             }
-          }' https://circleci.com/api/v2/project/gh/${GITHUB_REPOSITORY}/pipeline
+          }` https://circleci.com/api/v2/project/gh/${GITHUB_REPOSITORY}/pipeline
 
 
 
