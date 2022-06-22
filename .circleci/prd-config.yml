@@ -4,6 +4,9 @@ parameters:
   env:
     type: string
     default: ""
+  param:
+    type: string
+    default: ""
 
 jobs:
   prd:
@@ -12,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: echo "<< pipeline.parameters.env >> building"
+          command: echo "<< pipeline.parameters.env >> building << pipeline.parameters.param >>"
           
 workflows:
   build:
