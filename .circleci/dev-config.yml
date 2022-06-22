@@ -7,6 +7,9 @@ parameters:
   param:
     type: string
     default: ""
+  trigger:
+    type: boolean
+    default: false
 
 jobs:
   dev:
