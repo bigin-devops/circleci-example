@@ -2,14 +2,14 @@ version: 2.1
 
 jobs:
   bar:
-    machine:
-      image: ubuntu-2004:202107-02
+    docker:
+      image: cimg/base:stable
     steps:
       - checkout
       - run:
           command: echo "building"
       - run:
-          command: echo "testing"=
+          command: echo "testing"
       - run:
           command: echo "eating"
           
