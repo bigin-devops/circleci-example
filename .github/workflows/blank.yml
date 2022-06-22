@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Trigger CircleCI
         env:
-          CIRCLE_BRANCH: ${{ github.head_ref }}
+          CIRCLE_BRANCH: ${{ github.ref }}
           CIRCLE_TOKEN: ${{ secrets.CIRCLE_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
