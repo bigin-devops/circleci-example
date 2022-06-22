@@ -21,7 +21,7 @@ jobs:
       - continuation/continue:
           configuration_path: .circleci/<< pipeline.parameters.env >>-config.yml # use newly generated config to continue
           parameters: |
-            "[{"env":"<< pipeline.parameters.env >>"},{"param":"param 123"}]"
+            {"env":"<< pipeline.parameters.env >>","param":"param 123"}
 
 # our single workflow, that triggers the setup job defined above
 workflows:
