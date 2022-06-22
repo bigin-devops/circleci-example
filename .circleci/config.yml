@@ -1,25 +1,30 @@
 version: 2.1
 
+# this allows you to use CircleCI's dynamic configuration feature
+setup: true
+
+parameters:
+  env:
+    type: string
+    default: dev
+
+# the continuation orb is required in order to use dynamic configuration
+orbs:
+  continuation: circleci/continuation@0.3.1
+
+# our defined job, and its steps
 jobs:
-  bar:
-    docker:
-      image: cimg/base:stable
+  setup:
+    executor: continuation/default
     steps:
-      - checkout
-      - run:
-          command: echo "building"
-      - run:
-          command: echo "testing"
-      - run:
-          command: echo "eating"
-          
+      - checkout # checkout code
+      - continuation/continue:
+          configuration_path: << pipeline.parameters.env >>-config.yml # use newly generated config to continue
+          parameters: |
+            {"parameters":"<< pipeline.parameters.env >>"}
+
+# our single workflow, that triggers the setup job defined above
 workflows:
-  build:
+  setup:
     jobs:
-      - bar:
-          pre-steps: # steps to run before steps defined in the job bar
-            - run:
-                command: echo "install custom dependency"
-          post-steps: # steps to run after steps defined in the job bar
-            - run:
-                command: echo "upload artifact to s3"
+      - setup

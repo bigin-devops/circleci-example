@@ -1,0 +1,20 @@
+version: 2.1
+
+parameters:
+  env:
+    type: string
+    default: ""
+
+jobs:
+  prd:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          command: echo "<< pipeline.parameters.env >> building"
+          
+workflows:
+  build:
+    jobs:
+      - prd
