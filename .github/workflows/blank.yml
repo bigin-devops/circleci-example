@@ -15,7 +15,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
-            "branch":\"${GITHUB_REF##*/}\",
+            "branch":'"${GITHUB_REF##*/}"',
             "parameters": {
               "env":"prd",
               "trigger":true
