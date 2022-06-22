@@ -15,7 +15,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           curl -X POST \
-          -H 'Circle-Token: ${CIRCLE_TOKEN}' \
+          -H 'Circle-Token: "${CIRCLE_TOKEN}"' \
           -H 'Content-Type: application/json' \
           -H 'Accept: application/json' \
           -d '{"branch":"${CIRCLE_BRANCH}","parameters":{"env":"prd","trigger":true}}' \
