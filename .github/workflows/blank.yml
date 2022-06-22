@@ -17,8 +17,7 @@ jobs:
           curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
             "branch":"'"${GITHUB_REF##*/}"'",
             "parameters": {
-              "env":"prd",
-              "trigger":true
+              "env":"prd"
             }
           }' https://circleci.com/api/v2/project/gh/${GITHUB_REPOSITORY}/pipeline
 
