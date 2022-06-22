@@ -7,10 +7,6 @@ parameters:
   env:
     type: string
     default: ""
-  trigger:
-    type: boolean
-    default: false
-
 
 # the continuation orb is required in order to use dynamic configuration
 orbs:
@@ -30,6 +26,10 @@ jobs:
 # our single workflow, that triggers the setup job defined above
 workflows:
   setup:
-    when: << pipeline.parameters.trigger >>
+    when: 
+      not:
+        matches:
+          pattern: ""
+          value: << pipeline.parameters.env >>
     jobs:
       - setup
