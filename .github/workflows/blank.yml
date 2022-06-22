@@ -10,13 +10,12 @@ jobs:
     steps:
       - name: Trigger CircleCI
         env:
-          # CIRCLE_BRANCH: ${{ github.ref }}
+          CIRCLE_BRANCH: ${GITHUB_REF##*/}
           CIRCLE_TOKEN: ${{ secrets.CIRCLE_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          echo ${GITHUB_REF##*/}
           curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
-            "branch":"${GITHUB_REF##*/}",
+            "branch":"${CIRCLE_BRANCH}",
             "parameters": {
               "env":"prd",
               "trigger":true
