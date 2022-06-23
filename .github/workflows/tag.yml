@@ -16,7 +16,6 @@ jobs:
         run: |
           curl -u ${CIRCLE_TOKEN}: -X POST --header "Content-Type: application/json" -d '{
             "tag":"'"${GITHUB_REF##*/}"'",
-            "branch":"main",
             "parameters": {
               "env":"prd"
             }
