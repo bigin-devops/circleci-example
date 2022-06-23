@@ -34,5 +34,5 @@ workflows:
     jobs:
       - setup:
           filters:
-            branches:
-              tags: /.*/
+            tags:
+              only: /.*/
