@@ -32,4 +32,7 @@ workflows:
           pattern: ""
           value: << pipeline.parameters.env >>
     jobs:
-      - setup
+      - setup:
+          filters:
+            tags:
+              only: /.*/
