@@ -35,4 +35,4 @@ workflows:
       - setup:
           filters:
             branches:
-              ignore: /.*/
+              tags: /.*/
