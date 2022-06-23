@@ -22,5 +22,5 @@ workflows:
     jobs:
       - prd:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              ignore: /.*/
