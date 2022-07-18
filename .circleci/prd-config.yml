@@ -13,9 +13,13 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      - checkout
+      - run:
+          command: |
+            git clone https://$BITBUCKET_TOKEN@bitbucket.org/applicatTeam/bigin-helm-chart.git
+            ls -l      
       - run:
           command: echo "<< pipeline.parameters.env >> building << pipeline.parameters.param >>"
+
           
 workflows:
   build:
