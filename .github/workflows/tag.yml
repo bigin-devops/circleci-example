@@ -3,7 +3,7 @@ name: Trigger Build
 on:
   push:
     tags:        
-      - 'cdp-infra:cloud.config-[0-9]+.[0-9]+.[0-9]+-dev[0-9]+'
+      - 'cloud.config-[0-9]+.[0-9]+.[0-9]+-dev[0-9]+'
 
 jobs:
   trigger_build:
