@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           command: |
-            git clone https://bigin_service@$BITBUCKET_TOKEN@bitbucket.org/applicatTeam/bigin-helm-chart.git
+            git clone https://bigin_service:$BITBUCKET_TOKEN@bitbucket.org/applicatTeam/bigin-helm-chart.git
             ls -l      
       - run:
           command: echo "<< pipeline.parameters.env >> building << pipeline.parameters.param >>"
